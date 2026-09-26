@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, Instagram, MapPin } from "lucide-react";
 import { getStories } from "@/lib/posts";
+import Footer from "@/components/Footer";
+import Appbar from "@/components/Appbar";
 
 export const dynamic = "force-dynamic";
 
@@ -41,25 +43,24 @@ export default async function Home() {
             ABOUT
           </a>
           {/* <Link
-            className="focus-ring rounded-full border border-white/50 px-4 py-2 hover:bg-white hover:text-ink"
-            href="/upload-a-blog"
-          >
-            ADD A STORY <span aria-hidden="true">↗</span>
-          </Link> */}
+                className="focus-ring rounded-full border border-white/50 px-4 py-2 hover:bg-white hover:text-ink"
+                href="/upload-a-blog"
+              >
+                ADD A STORY <span aria-hidden="true">↗</span>
+              </Link> */}
         </nav>
       </header>
-
-      <section className="grain relative flex h-screen items-end overflow-hidden bg-[#213b36] px-6 pb-16 text-white xxl:min-h-[840px] md:px-14 md:pb-20">
+      <section className="grain relative flex h-[600px] lg:h-screen items-end overflow-hidden bg-[#213b36] px-6 pb-16 text-white xxl:min-h-[840px] md:px-14 md:pb-20">
         <Image
           src={heroImage}
           alt="A winding road through the Italian countryside at sunset"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-70"
+          className="object-cover object-center opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#102622]/75 via-[#102622]/20 to-transparent" />
-        <div className="relative z-[1] max-w-[1050px]">
+        <div className="relative z-[1] max-w-[1050px] ">
           <div className="mb-6 flex items-center gap-3 text-[#edb08d]">
             <span className="h-px w-9 bg-[#edb08d]" />
             <span className="eyebrow">A personal travel journal</span>
@@ -73,20 +74,11 @@ export default async function Home() {
               Notes from near and far. The places that stay with you, and the
               little things you bring home.
             </p>
-            {/* <a
-              href="#journal"
-              className="fixed bottom-5 focus-ring flex w-fit items-center gap-3 text-[10px] font-semibold tracking-[.18em] bg-purple-500 px-4 rounded-2xl"
-            >
-              EXPLORE THE JOURNAL{" "}
-              <div className="m-2 bg-white rounded-full">
-                <ArrowDown size={20} strokeWidth={5} color="#FF0000" className="color-red-600" />
-              </div>
-            </a> */}
           </div>
         </div>
-        <span className="eyebrow absolute bottom-9 right-14 hidden text-white/65 md:block">
+        {/* <span className="eyebrow absolute bottom-9 right-14 hidden text-white/65 md:block">
           36° 43′ N &nbsp; 9° 08′ W
-        </span>
+        </span> */}
       </section>
 
       <section
@@ -221,25 +213,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <footer className="flex flex-col gap-5 bg-[#1f403c] px-6 py-8 text-white/75 md:flex-row md:items-center md:justify-between md:px-14">
-        <Link
-          href="/"
-          className="text-[12px] font-semibold tracking-[.17em] text-white"
-        >
-          KARAvaan<span className="text-[#e6a27f]">.</span>
-        </Link>
-        <p className="text-[10px] xl:text-[13px] tracking-wide">
-          Made with lots of ❤️ © codewithkara.com, {new Date().getFullYear()}
-        </p>
-        <a
-          href="https://www.instagram.com/gaurav_kalakoti_/"
-          target="_blank"
-          aria-label="Instagram"
-          className="focus-ring w-fit hover:text-white"
-        >
-          <Instagram size={17} />
-        </a>
-      </footer>
+      <Footer />
     </main>
   );
 }
