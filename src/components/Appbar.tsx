@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Logo1 from "@/assets/logo1.png";
 
 export default function Appbar() {
   return (
@@ -7,9 +9,18 @@ export default function Appbar() {
       <div>
         <Link
           href="/"
-          className="focus-ring text-[12px] font-semibold tracking-[.17em]"
+          className="focus-ring flex items-center gap-2 text-[13px] font-semibold tracking-[.19em] xl:text-xl"
         >
-          KARAvaan<span className="text-[#c86b4a]">.</span>
+          <Image
+            src={Logo1}
+            alt="Karavaan Logo"
+            width={30}
+            height={30}
+            className="object-contain rounded-full"
+          />
+          <span>
+            KARAvaan<span className="text-[#e6a27f]">.</span>
+          </span>
         </Link>
       </div>
       <div>

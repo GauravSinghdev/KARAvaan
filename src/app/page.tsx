@@ -5,6 +5,7 @@ import { getStories } from "@/lib/posts";
 import Footer from "@/components/Footer";
 import Appbar from "@/components/Appbar";
 import HeroImg from "@/assets/Hero1.jpeg";
+import Logo1 from "@/assets/logo1.png";
 
 export const dynamic = "force-dynamic";
 
@@ -26,23 +27,33 @@ export default async function Home() {
       <header className="absolute z-10 flex w-full items-center justify-between px-6 py-6 text-white md:px-14 md:py-8">
         <Link
           href="/"
-          className="focus-ring text-[13px] font-semibold tracking-[.19em]"
+          className="focus-ring flex items-center gap-2 text-[13px] font-semibold tracking-[.19em] xl:text-xl"
         >
-          KARAvaan<span className="text-[#e6a27f]">.</span>
+          <Image
+            src={Logo1}
+            alt="Karavaan Logo"
+            width={30}
+            height={30}
+            className="object-contain rounded-full"
+          />
+          <span>
+            KARAvaan<span className="text-[#e6a27f]">.</span>
+          </span>
         </Link>
+
         <nav className="flex items-center gap-7 text-[11px] font-medium tracking-[.12em]">
-          <a
+          <Link
             className="focus-ring hidden hover:text-[#edb08d] sm:block"
             href="/all-journals"
           >
             ALL JOURNALS
-          </a>
-          <a
+          </Link>
+          <Link
             className="focus-ring hidden hover:text-[#edb08d] sm:block"
             href="#about"
           >
             ABOUT
-          </a>
+          </Link>
           {/* <Link
                 className="focus-ring rounded-full border border-white/50 px-4 py-2 hover:bg-white hover:text-ink"
                 href="/upload-a-blog"
