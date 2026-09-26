@@ -55,7 +55,7 @@ export default async function JournalEntry({
         </div>
         <div className="mx-auto max-w-[720px] pt-10 md:pt-14">
           <p className="eyebrow mb-4 text-[#b16b4f]">
-            {date} · A FIELDNOTE · {story.viewCount ?? 0}{" "}
+            {date} · A KARAvaan · {story.viewCount ?? 0}{" "}
             {(story.viewCount ?? 0) === 1 ? "VIEW" : "VIEWS"}
           </p>
           <h1 className="serif text-[46px] leading-[1.08] tracking-[-.035em] md:text-[72px]">
