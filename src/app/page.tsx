@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, Instagram, MapPin } from "lucide-react";
 import { getStories } from "@/lib/posts";
 import Footer from "@/components/Footer";
 import Appbar from "@/components/Appbar";
+import HeroImg from "@/assets/Hero1.jpeg";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +35,7 @@ export default async function Home() {
             className="focus-ring hidden hover:text-[#edb08d] sm:block"
             href="/all-journals"
           >
-            JOURNAL
+            ALL JOURNALS
           </a>
           <a
             className="focus-ring hidden hover:text-[#edb08d] sm:block"
@@ -52,12 +53,12 @@ export default async function Home() {
       </header>
       <section className="grain relative flex h-[600px] lg:h-screen items-end overflow-hidden bg-[#213b36] px-6 pb-16 text-white xxl:min-h-[840px] md:px-14 md:pb-20">
         <Image
-          src={heroImage}
-          alt="A winding road through the Italian countryside at sunset"
+          src={HeroImg}
+          alt="A beautifull mountain view from kedarnath."
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-60"
+          className="object-cover object-center opacity-100"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#102622]/75 via-[#102622]/20 to-transparent" />
         <div className="relative z-[1] max-w-[1050px] ">

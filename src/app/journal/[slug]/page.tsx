@@ -70,7 +70,7 @@ export default async function JournalEntry({
           <div className="border-t border-[#d9d7ce] pt-6">
             <Link
               href="/all-journals"
-              className="focus-ring inline-flex items-center gap-2 text-[10px] font-semibold tracking-[.14em] text-[#52665e]"
+              className="focus-ring inline-flex items-center gap-2 text-[10px] font-semibold tracking-[.14em] text-[#52665e] p-2 hover:bg-[#edb08d] ease-in-out duration-300 "
             >
               <ArrowLeft size={13} /> BACK TO ALL JOURNALS
             </Link>

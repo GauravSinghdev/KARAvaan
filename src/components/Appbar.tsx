@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Appbar() {
   return (
-    <header className="flex items-center justify-between border-b border-[#d9d7ce] px-6 py-5 md:px-12">
+    <header className="flex items-center justify-between border-b border-[#d9d7ce] px-6 py-6 md:px-12">
       <div>
         <Link
           href="/"
@@ -15,14 +15,26 @@ export default function Appbar() {
       <div>
         <nav className="flex items-center gap-7 text-[11px] font-medium tracking-[.12em]">
           <Link
-            className="focus-ring hidden hover:text-[#edb08d] sm:block"
             href="/all-journals"
+            className="focus-ring relative hidden w-fit transition-colors duration-300 hover:text-[#edb08d] sm:block
+            after:absolute after:bottom-[-4px] after:left-0
+            after:h-[2px] after:w-full
+            after:origin-center after:scale-x-0
+            after:bg-[#edb08d]
+            after:transition-transform after:duration-300 after:ease-in-out
+            hover:after:scale-x-100"
           >
-            JOURNAL
+            ALL JOURNALS
           </Link>
           <Link
-            className="focus-ring hidden hover:text-[#edb08d] sm:block"
-            href="http://localhost:3000/#about"
+            href="https://karavaan.codewithkara.com/#about"
+            className="focus-ring relative hidden w-fit transition-colors duration-300 hover:text-[#edb08d] sm:block
+            after:absolute after:bottom-[-4px] after:left-0
+            after:h-[2px] after:w-full
+            after:origin-center after:scale-x-0
+            after:bg-[#edb08d]
+            after:transition-transform after:duration-300 after:ease-in-out
+            hover:after:scale-x-100"
           >
             ABOUT
           </Link>
