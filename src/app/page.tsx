@@ -226,13 +226,14 @@ export default async function Home() {
           href="/"
           className="text-[12px] font-semibold tracking-[.17em] text-white"
         >
-          FIELDNOTES<span className="text-[#e6a27f]">.</span>
+          KARAvaan<span className="text-[#e6a27f]">.</span>
         </Link>
-        <p className="text-[10px] tracking-wide">
-          Made slowly, somewhere in the world. © {new Date().getFullYear()}
+        <p className="text-[10px] xl:text-[13px] tracking-wide">
+          Made with lots of ❤️ © codewithkara.com, {new Date().getFullYear()}
         </p>
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/gaurav_kalakoti_/"
+          target="_blank"
           aria-label="Instagram"
           className="focus-ring w-fit hover:text-white"
         >

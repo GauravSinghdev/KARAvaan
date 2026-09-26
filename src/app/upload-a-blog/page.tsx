@@ -4,7 +4,7 @@ import { isEditorAuthenticated } from "@/lib/auth";
 import { EditorForm } from "./editor-form";
 import { LoginForm } from "./login-form";
 
-export const metadata = { title: "Add a story — Fieldnotes" };
+export const metadata = { title: "Add a story — Karavaan" };
 
 export default async function UploadABlogPage() {
   const authenticated = await isEditorAuthenticated().catch(() => false);

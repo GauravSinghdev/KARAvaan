@@ -5,7 +5,7 @@ import { JournalList } from "./journal-list";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "All journals — Fieldnotes", description: "Browse every travel journal entry by place, date, or views." };
+export const metadata = { title: "All journals — Karavaan", description: "Browse every travel journal entry by place, date, or views." };
 
 export default async function AllJournalsPage() {
   const stories = await getAllStories();

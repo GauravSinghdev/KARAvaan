@@ -15,7 +15,7 @@ export async function POST() {
   }
 
   const timestamp = Math.floor(Date.now() / 1000);
-  const folder = "fieldnotes";
+  const folder = "karavaan";
   const signature = createHash("sha1").update(`folder=${folder}&timestamp=${timestamp}${apiSecret}`).digest("hex");
   return NextResponse.json({ cloudName, apiKey, timestamp, folder, signature });
 }

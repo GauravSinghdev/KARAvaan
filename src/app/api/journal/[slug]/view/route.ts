@@ -15,7 +15,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ sl
     const post = await prisma.post.findUnique({ where: { slug }, select: { viewCount: true } });
     return NextResponse.json({ viewCount: post?.viewCount ?? 0 });
   } catch (error) {
-    console.error("Failed to record a Fieldnotes story view:", error);
+    console.error("Failed to record a Karavaan story view:", error);
     return NextResponse.json({ error: "Could not record this view." }, { status: 503 });
   }
 }

@@ -1,4 +1,4 @@
-# Fieldnotes
+# karavaan
 
 A personal travel portfolio built with Next.js, Tailwind CSS, Cloudinary uploads, and Prisma/PostgreSQL.
 

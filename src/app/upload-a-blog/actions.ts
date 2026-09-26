@@ -51,7 +51,7 @@ export async function publishAction(_previous: EditorState, formData: FormData):
     slug = existing ? `${baseSlug}-${Date.now().toString(36)}` : baseSlug;
     await prisma.post.create({ data: { title, slug, location, country, visitedAt, excerpt, content, coverImage, imageAlt, published: true } });
   } catch (error) {
-    console.error("Failed to publish a Fieldnotes post:", error);
+    console.error("Failed to publish a Karavaan post:", error);
     return { error: "Couldn’t save this story. Check DATABASE_URL and your Neon database, then try again." };
   }
 

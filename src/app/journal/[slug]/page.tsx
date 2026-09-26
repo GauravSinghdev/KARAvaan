@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const story = await getStory(slug);
-  return story ? { title: `${story.title} — Fieldnotes`, description: story.excerpt } : { title: "Story not found — Fieldnotes" };
+  return story ? { title: `${story.title} — Karavaan`, description: story.excerpt } : { title: "Story not found — Karavaan" };
 }
 
 export default async function JournalEntry({ params }: { params: Promise<{ slug: string }> }) {

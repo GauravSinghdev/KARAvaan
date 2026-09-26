@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 
-const COOKIE_NAME = "fieldnotes_editor";
+const COOKIE_NAME = "karavaan_editor";
 const SESSION_AGE = 60 * 60 * 24 * 7;
 
 function signature(value: string) {
@@ -13,8 +13,8 @@ function signature(value: string) {
 export function verifyPassword(password: string) {
   const expected = process.env.BLOG_PASSWORD;
   if (!expected) throw new Error("BLOG_PASSWORD is not configured.");
-  const suppliedHash = createHmac("sha256", "fieldnotes-password-check").update(password).digest();
-  const expectedHash = createHmac("sha256", "fieldnotes-password-check").update(expected).digest();
+  const suppliedHash = createHmac("sha256", "karavaan-password-check").update(password).digest();
+  const expectedHash = createHmac("sha256", "karavaan-password-check").update(expected).digest();
   return timingSafeEqual(suppliedHash, expectedHash);
 }
 
