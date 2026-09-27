@@ -11,7 +11,9 @@ export const dynamic = "force-dynamic";
 
 // const heroImage =
 //   "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90";
-{/* src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85" */}
+{
+  /* src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85" */
+}
 function formatDate(date: Date | string) {
   return new Intl.DateTimeFormat("en", {
     month: "long",
@@ -82,7 +84,7 @@ export default async function Home() {
             <br />a little closer.
           </h1>
           <div className="mt-8 flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
-            <p className="max-w-[390px] text-[14px] leading-7 text-white/80">
+            <p className="max-w-[390px] text-[14px] leading-7 text-white shadow-xl lg:shadow-none">
               Notes from near and far. The places that stay with you, and the
               little things you bring home.
             </p>
@@ -94,6 +96,220 @@ export default async function Home() {
       </section>
 
       <section
+        id="journal"
+        className="mx-auto max-w-[1440px] px-6 py-20 md:px-14 md:py-28"
+      >
+        {/* SECTION HEADER — SAME FOR MOBILE AND DESKTOP */}
+        <div className="mb-12 flex flex-col justify-between gap-6 border-b border-[#d9d7ce] pb-7 sm:flex-row sm:items-end">
+          <div>
+            <p className="eyebrow mb-3 text-[#b16b4f]">
+              The journal · 2023—2025
+            </p>
+
+            <h2 className="serif text-[42px] leading-tight tracking-[-.035em] md:text-[58px]">
+              Places, in passing.
+            </h2>
+          </div>
+
+          <div className="flex items-end justify-between gap-5">
+            <p className="max-w-[290px] text-[12px] leading-6 text-[#68756f]">
+              A growing collection of field notes, photographs, and favorite
+              detours.
+            </p>
+
+            <Link
+              href="/all-journals"
+              className="focus-ring shrink-0 border-b border-[#b16b4f] pb-2 text-[10px] font-bold tracking-[.13em] text-[#435950]"
+            >
+              ALL JOURNALS ↗
+            </Link>
+          </div>
+        </div>
+
+        {/* ======================================= */}
+        {/* MOBILE VERSION — SWIPEABLE JOURNALS     */}
+        {/* ======================================= */}
+
+        <div className="md:hidden">
+          {/* Horizontal swipe container */}
+          <div
+            className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-6 pb-5 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            style={{
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {(featured ? [featured, ...otherStories] : otherStories).map(
+              (story, index) => (
+                <Link
+                  key={story.slug}
+                  href={`/journal/${story.slug}`}
+                  className="story-card focus-ring group relative block h-[440px] w-[88%] shrink-0 snap-center overflow-hidden bg-[#bac6b9]"
+                >
+                  {/* Journal image */}
+                  <Image
+                    src={story.coverImage}
+                    alt={story.imageAlt}
+                    fill
+                    sizes="88vw"
+                    className="story-image object-cover"
+                  />
+
+                  {/* Dark gradient for better text visibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#142722]/90 via-[#142722]/20 to-transparent" />
+
+                  {/* Location badge */}
+                  <div className="absolute left-5 top-5 flex max-w-[calc(100%-40px)] items-center gap-2 rounded-full bg-[#f5f2e9]/95 px-3 py-2 text-[9px] font-bold tracking-[.12em] text-ink">
+                    <MapPin size={12} className="shrink-0" />
+
+                    <span className="truncate">
+                      {story.location.toUpperCase()},{" "}
+                      {story.country.toUpperCase()}
+                    </span>
+                  </div>
+
+                  {/* Journal content */}
+                  <div className="absolute inset-x-5 bottom-7 text-white">
+                    {/* Date and journal number */}
+                    <p className="eyebrow mb-3 text-white/75">
+                      {String(index + 1).padStart(2, "0")} /{" "}
+                      {formatDate(story.visitedAt)}
+                    </p>
+
+                    {/* Journal title */}
+                    <h3 className="serif text-[30px] leading-[1.1] tracking-[-.025em]">
+                      {story.title}
+                    </h3>
+
+                    {/* Journal excerpt */}
+                    <p className="mt-3 line-clamp-1 text-[12px] leading-6 text-white/80">
+                      {story.excerpt}
+                    </p>
+
+                    {/* Read journal button */}
+                    <div className="mt-5 flex items-center justify-between border-t border-white/30 pt-4">
+                      <span className="text-[10px] font-bold tracking-[.15em]">
+                        READ JOURNAL
+                      </span>
+
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/50 transition duration-300 group-hover:bg-white group-hover:text-[#142722]">
+                        <ArrowRight size={16} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              )
+            )}
+          </div>
+
+          {/* Mobile swipe indicator */}
+          <div className="mt-2 flex items-center justify-between text-[10px] font-semibold tracking-[.14em] text-[#68756f]">
+            <span>SWIPE TO EXPLORE</span>
+
+            <div className="flex items-center gap-2">
+              <span>DRAG</span>
+              <ArrowRight size={15} />
+            </div>
+          </div>
+        </div>
+
+        {/* ======================================= */}
+        {/* DESKTOP VERSION — ORIGINAL DESIGN      */}
+        {/* ======================================= */}
+
+        {/* Featured journal */}
+        {featured && (
+          <Link
+            href={`/journal/${featured.slug}`}
+            className="story-card focus-ring group relative mb-5 hidden h-[420px] overflow-hidden bg-[#bac6b9] md:block md:h-[560px]"
+          >
+            <Image
+              src={featured.coverImage}
+              alt={featured.imageAlt}
+              fill
+              sizes="(max-width: 768px) 100vw, 90vw"
+              className="story-image object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#142722]/80 via-transparent to-transparent" />
+
+            {/* Location */}
+            <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full bg-[#f5f2e9]/95 px-3 py-2 text-[9px] font-bold tracking-[.16em] text-ink md:left-8 md:top-8">
+              <MapPin size={12} /> {featured.location.toUpperCase()},{" "}
+              {featured.country.toUpperCase()}
+            </div>
+
+            {/* Featured content */}
+            <div className="absolute inset-x-6 bottom-7 flex items-end justify-between text-white md:inset-x-10 md:bottom-10">
+              <div>
+                <p className="eyebrow mb-3 text-white/75">
+                  01 / {formatDate(featured.visitedAt)}
+                </p>
+
+                <h3 className="serif text-[38px] tracking-[-.025em] md:text-[62px]">
+                  {featured.title}
+                </h3>
+
+                <p className="mt-2 max-w-[500px] text-[12px] leading-6 text-white/75">
+                  {featured.excerpt}
+                </p>
+              </div>
+
+              <span className="mb-1 hidden h-12 w-12 items-center justify-center rounded-full border border-white/50 transition group-hover:bg-white group-hover:text-ink sm:flex">
+                <ArrowRight size={17} />
+              </span>
+            </div>
+          </Link>
+        )}
+
+        {/* Other desktop journals */}
+        <div className="hidden gap-5 md:grid md:grid-cols-2">
+          {otherStories.map((story, index) => (
+            <Link
+              key={story.slug}
+              href={`/journal/${story.slug}`}
+              className="story-card focus-ring group"
+            >
+              {/* Journal image */}
+              <div className="relative h-[300px] overflow-hidden bg-[#d6d5cb] md:h-[360px]">
+                <Image
+                  src={story.coverImage}
+                  alt={story.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="story-image object-cover"
+                />
+
+                {/* Location badge */}
+                <span className="absolute left-5 top-5 rounded-full bg-[#f5f2e9]/95 px-3 py-2 text-[9px] font-bold tracking-[.15em]">
+                  {story.location.toUpperCase()} · {story.country.toUpperCase()}
+                </span>
+              </div>
+
+              {/* Journal content */}
+              <div className="flex items-start justify-between border-b border-[#d9d7ce] py-5">
+                <div>
+                  <p className="eyebrow mb-2 text-[#b16b4f]">
+                    0{index + 2} / {formatDate(story.visitedAt)}
+                  </p>
+
+                  <h3 className="serif text-[28px] leading-tight">
+                    {story.title}
+                  </h3>
+
+                  <p className="mt-2 max-w-md text-[12px] leading-6 text-[#68756f]">
+                    {story.excerpt}
+                  </p>
+                </div>
+
+                <span className="mt-5 text-[#b16b4f]">
+                  <ArrowRight size={18} />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+      {/* <section
         id="journal"
         className="mx-auto max-w-[1440px] px-6 py-20 md:px-14 md:py-28"
       >
@@ -192,12 +408,11 @@ export default async function Home() {
             </Link>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section id="about" className="bg-[#e8e5da] px-6 py-20 md:px-14 md:py-24">
         <div className="mx-auto grid max-w-[1300px] gap-10 md:grid-cols-[1fr_1fr] md:items-center md:gap-20">
           <div className="relative h-[360px] overflow-hidden bg-[#bbc4b8] md:h-[500px] shadow-xl">
-          
             <Image
               src={meCoding}
               alt="A travel journal and map set out for the next journey"
@@ -212,16 +427,16 @@ export default async function Home() {
               Collecting moments, not miles.
             </h2>
             <p className="mt-6 text-[13px] leading-7 text-[#586660]">
-              I travel for the long lunches, the wrong turns that turn out
+              Hi, This is Gaurav Singh (aka KARA) from Haldwani, Uttarkhand. I travel for the long lunches, the wrong turns that turn out
               right, and the feeling of being somewhere entirely new. This is my
               little corner of the internet for keeping it all.
             </p>
-            <a
-              href="mailto:hello@example.com"
+            <Link
+              href="https://www.instagram.com/gaurav_kalakoti_"
               className="focus-ring mt-7 inline-flex items-center gap-2 border-b border-[#b16b4f] pb-2 text-[10px] font-bold tracking-[.15em]"
             >
               SAY HELLO <ArrowRight size={13} />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
