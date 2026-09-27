@@ -1,17 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, Instagram, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { getStories } from "@/lib/posts";
 import Footer from "@/components/Footer";
-import Appbar from "@/components/Appbar";
 import HeroImg from "@/assets/Hero1.jpeg";
 import Logo1 from "@/assets/logo1.png";
+import meCoding from "@/assets/me_coding.jpg";
 
 export const dynamic = "force-dynamic";
 
-const heroImage =
-  "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90";
-
+// const heroImage =
+//   "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90";
+{/* src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85" */}
 function formatDate(date: Date | string) {
   return new Intl.DateTimeFormat("en", {
     month: "long",
@@ -196,9 +196,10 @@ export default async function Home() {
 
       <section id="about" className="bg-[#e8e5da] px-6 py-20 md:px-14 md:py-24">
         <div className="mx-auto grid max-w-[1300px] gap-10 md:grid-cols-[1fr_1fr] md:items-center md:gap-20">
-          <div className="relative h-[360px] overflow-hidden bg-[#bbc4b8] md:h-[500px]">
+          <div className="relative h-[360px] overflow-hidden bg-[#bbc4b8] md:h-[500px] shadow-xl">
+          
             <Image
-              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85"
+              src={meCoding}
               alt="A travel journal and map set out for the next journey"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
